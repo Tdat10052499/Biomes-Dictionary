@@ -1,0 +1,48 @@
+# Biosphere Journey - Workspace & Coding Rules
+
+This workspace operates under strict development guidelines. All contributors must adhere to the rules specified below.
+
+---
+
+## 1. Stack Restrictions & No-Dependency Mandate
+- **Core Stack**: Vanilla HTML5, Vanilla CSS3, and Vanilla JavaScript (ES6+).
+- **Absolute Framework Ban**: Do not install or import any front-end frameworks (e.g., React, Vue, Svelte, Angular) or styling libraries (e.g., Tailwind CSS, Bootstrap).
+- **No Third-Party Libraries**: No jQuery, Lodash, Axios, or external UI component packs. Use standard browser Web APIs for all features.
+- **Asset Usage**: Local hosting of all CSS, JavaScript, and asset files. No external CDN injections except for trusted system integrations if explicitly approved.
+
+---
+
+## 2. CSS & Styling Standards
+- **Global Theme & Variables**: 
+  - Manage all styling tokens using CSS variables (`:root`).
+  - Provide root variables for Light Mode and Dark Mode (activated via `data-theme` or a `.dark` class on `<html>`/`<body>`).
+- **Dynamic Biome Theming**:
+  - Implement CSS variables for the dynamic accent colors and pastel gradients (e.g., `--accent-color`, `--biome-gradient`).
+  - Override these variables dynamically based on the active biome (using classes like `.theme-aquatic`, `.theme-tropical`, `.theme-desert`, `.theme-grassland`, `.theme-tundra` on a high-level wrapper or `<body>`).
+- **Responsive Layout**:
+  - Use modern CSS Layouts: Flexbox and Grid.
+  - Implement a fluid, responsive Wikipedia-inspired layout (left navigation sidebar, center main content, right-aligned infobox).
+  - Use Media Queries to adjust the layout elegantly for tablet and mobile viewports (e.g., collapsing the sidebar and infobox into a single column).
+
+---
+
+## 3. Markup & Semantic HTML
+- **Document Structure**: Maintain a single, main `index.html` structure (or cleanly mapped views). Use semantic HTML5 elements: `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>`.
+- **Accessibility (a11y)**:
+  - Use correct heading hierarchies (`<h1>` -> `<h2>` -> `<h3>`).
+  - Provide `alt` text for images.
+  - Ensure interactive components (buttons, links) are keyboard navigable.
+- **Unique Identifiers**: Use descriptive, unique `id` attributes on key interactive components (e.g., `#theme-toggle`, `#podcast-play-btn`, `#flashcard-container`) to facilitate automation and testing.
+
+---
+
+## 4. Javascript Rules
+- **DOM Manipulation**:
+  - Use modern, direct API methods: `querySelector`, `querySelectorAll`, `createElement`, `classList` (`add`, `remove`, `toggle`).
+  - Keep JavaScript clean and decoupled from layout structure where possible.
+- **Event Management**:
+  - Add interactions through event listeners: `addEventListener`. Avoid inline Event handlers (e.g., `onclick="..."` in HTML).
+  - Clean up event listeners or leverage event delegation if dynamically creating elements.
+- **State & Routing**:
+  - Manage application state (e.g., dark mode status, current active biome, podcast player state) in simple, clean JavaScript objects.
+  - Handle view transitions or active biome changes smoothly via DOM swapping or simple routing logic.
