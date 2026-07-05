@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the Biosphere Encyclopedia - an asymmetrical Bento Grid dictionary of Earth's 5 major biomes made from recycled waste.">
+    <title>Biomes Dictionary - Biosphere Journey</title>
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <!-- Top Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo" id="header-logo">
+                <span class="logo-icon">🌿</span>
+                <span class="logo-text">Biosphere Journey</span>
+            </a>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="dictionary.html" class="nav-link active">Biomes dictionary</a></li>
+                    <li><a href="about.html" class="nav-link">About us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Biomes Bento Section -->
+        <section class="biomes-section" id="dictionary-hub" style="padding-top: 10rem;">
+            <div class="biomes-container">
+                <div class="section-header reveal-on-scroll">
+                    <span class="section-badge">Dictionary Hub</span>
+                    <h1 class="section-title">The Biosphere Encyclopedia</h1>
+                    <p class="section-subtitle">Select a biome below to explore its distinct climate, flora, fauna, and recycled materials log.</p>
+                </div>
+                
+                <div class="bento-grid">
+                    <!-- Ocean Card -->
+                    <a href="ocean.html" class="bento-card bento-ocean reveal-on-scroll delay-100" style="--biome-accent: var(--color-sky-dark);">
+                        <div class="bento-card-bg"></div>
+                        <div class="bento-card-content">
+                            <h3>Aquatic / Ocean</h3>
+                            <p>Explore nylon bag currents, plastic bottle reefs, and aquatic life conservation.</p>
+                            <span class="explore-tag">Open Entry →</span>
+                        </div>
+                    </a>
+                    
+                    <!-- Forest Card -->
+                    <a href="forest.html" class="bento-card bento-forest reveal-on-scroll delay-200" style="--biome-accent: var(--color-sage-dark);">
+                        <div class="bento-card-bg"></div>
+                        <div class="bento-card-content">
+                            <h3>Tropical Forest</h3>
+                            <p>Delve into cardboard canopies, layered paper foliage, and biodiversity hot spots.</p>
+                            <span class="explore-tag">Open Entry →</span>
+                        </div>
+                    </a>
+                    
+                    <!-- Desert Card -->
+                    <a href="desert.html" class="bento-card bento-desert reveal-on-scroll delay-300" style="--biome-accent: var(--color-earth-dark);">
+                        <div class="bento-card-bg"></div>
+                        <div class="bento-card-content">
+                            <h3>Desert</h3>
+                            <p>Study styrofoam dunes, bottle-crafted cacti, and extreme temperature survival.</p>
+                            <span class="explore-tag">Open Entry →</span>
+                        </div>
+                    </a>
+                    
+                    <!-- Grassland Card -->
+                    <a href="grassland.html" class="bento-card bento-grassland reveal-on-scroll delay-400" style="--biome-accent: #c2b280;">
+                        <div class="bento-card-bg"></div>
+                        <div class="bento-card-content">
+                            <h3>Grassland</h3>
+                            <p>Examine open plains of packaging grass and seasonal wildlife migrations.</p>
+                            <span class="explore-tag">Open Entry →</span>
+                        </div>
+                    </a>
+                    
+                    <!-- Tundra Card -->
+                    <a href="tundra.html" class="bento-card bento-tundra reveal-on-scroll delay-100" style="--biome-accent: #b3cde3;">
+                        <div class="bento-card-bg"></div>
+                        <div class="bento-card-content">
+                            <h3>Tundra</h3>
+                            <p>Investigate cotton-glacier landscapes, frost-resistant mosses, and climate threats.</p>
+                            <span class="explore-tag">Open Entry →</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sticky Podcast Player -->
+    <div class="podcast-player" id="podcast-player">
+        <div class="player-container">
+            <button class="player-btn" id="podcast-play-btn" aria-label="Play Podcast">
+                <span class="play-icon">▶</span>
+            </button>
+            <div class="player-info">
+                <span class="player-title">Biosphere Audio Guide</span>
+                <span class="player-track">Select a biome track to begin journey</span>
+            </div>
+            <div class="player-controls">
+                <select id="podcast-track-select" class="track-select">
+                    <option value="none">Choose Track...</option>
+                    <option value="ocean">1. Aquatic / Ocean Guide</option>
+                    <option value="forest">2. Tropical Forest Guide</option>
+                    <option value="desert">3. Desert Guide</option>
+                    <option value="grassland">4. Grassland Guide</option>
+                    <option value="tundra">5. Tundra Guide</option>
+                </select>
+                <audio id="podcast-audio" src=""></audio>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-academic-info">Course: Human and Environment | Class: 253_72HMAN10043_12 | Lecturer: Dr. Võ Thị Minh Hoàng</p>
+            <p class="footer-copyright">&copy; 2026 Biosphere Journey. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -62,32 +62,91 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================================================
-    // ACTIVE NAVIGATION LINK HIGHLIGHTING ON SCROLL
+    // ACTIVE NAVIGATION LINK HIGHLIGHTING
     // ==========================================================================
-    const sections = document.querySelectorAll('section[id]');
+    const cleanPath = (path) => path.replace(/\.html$/, '').split('/').pop() || 'index';
+    const currentPath = cleanPath(window.location.pathname);
     
-    window.addEventListener('scroll', () => {
-        const scrollY = window.pageYOffset;
-        
-        sections.forEach(current => {
-            const sectionHeight = current.offsetHeight;
-            const sectionTop = current.offsetTop - 120; // offset header height
-            const sectionId = current.getAttribute('id');
-            
-            // Select active nav link corresponding to current visible section
-            const activeLink = document.querySelector(`.nav-menu a[href*=${sectionId}]`);
-            
-            if (activeLink) {
-                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    activeLink.classList.add('active');
-                } else if (scrollY <= 100) {
-                    // Default back to first item when scrolled to the very top
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    const homeLink = document.querySelector('.nav-menu a[href="#"]');
-                    if (homeLink) homeLink.classList.add('active');
-                }
+    navLinks.forEach(link => {
+        const linkPath = cleanPath(link.getAttribute('href') || '');
+        if (linkPath === currentPath) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+
+    // ==========================================================================
+    // STICKY PODCAST PLAYER LOGIC
+    // ==========================================================================
+    const playBtn = document.getElementById('podcast-play-btn');
+    const trackSelect = document.getElementById('podcast-track-select');
+    const audioEl = document.getElementById('podcast-audio');
+    const playerTrackText = document.querySelector('.player-track');
+
+    const tracks = {
+        ocean: { name: 'Oceanic Journeys Audio Guide', src: 'assets/audio/ocean.mp3' },
+        forest: { name: 'Tropical Canopy Explorations', src: 'assets/audio/forest.mp3' },
+        desert: { name: 'Desert Survival Audio Guide', src: 'assets/audio/desert.mp3' },
+        grassland: { name: 'Sustaining the Open Grasslands', src: 'assets/audio/grassland.mp3' },
+        tundra: { name: 'Tundra Cold Wilderness Walk', src: 'assets/audio/tundra.mp3' }
+    };
+
+    if (playBtn && trackSelect && audioEl) {
+        let isPlaying = false;
+
+        const updatePlayState = (playing) => {
+            isPlaying = playing;
+            if (isPlaying) {
+                playBtn.innerHTML = '<span>⏸</span>';
+                playBtn.setAttribute('aria-label', 'Pause Podcast');
+            } else {
+                playBtn.innerHTML = '<span>▶</span>';
+                playBtn.setAttribute('aria-label', 'Play Podcast');
+            }
+        };
+
+        playBtn.addEventListener('click', () => {
+            if (trackSelect.value === 'none') {
+                playerTrackText.textContent = 'Please choose a track first!';
+                return;
+            }
+            if (isPlaying) {
+                audioEl.pause();
+                updatePlayState(false);
+            } else {
+                audioEl.play().then(() => {
+                    updatePlayState(true);
+                }).catch(err => {
+                    // Fallback representation if actual audio file is missing
+                    playerTrackText.textContent = tracks[trackSelect.value].name + ' (Previewing)';
+                    updatePlayState(true);
+                });
             }
         });
-    });
+
+        trackSelect.addEventListener('change', () => {
+            const trackKey = trackSelect.value;
+            if (trackKey === 'none') {
+                audioEl.src = '';
+                playerTrackText.textContent = 'Select a track to begin journey';
+                updatePlayState(false);
+            } else {
+                const track = tracks[trackKey];
+                audioEl.src = track.src;
+                playerTrackText.textContent = track.name;
+                audioEl.play().then(() => {
+                    updatePlayState(true);
+                }).catch(() => {
+                    // Fallback representation
+                    playerTrackText.textContent = track.name + ' (Previewing)';
+                    updatePlayState(true);
+                });
+            }
+        });
+        
+        audioEl.addEventListener('ended', () => {
+            updatePlayState(false);
+        });
+    }
 });
