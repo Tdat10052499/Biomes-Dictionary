@@ -19,6 +19,10 @@ At its core, **Biosphere Journey** is a message of environmental protection, res
   - A left navigation sidebar for quick navigation between biomes.
   - A center main content area detailing the biome's ecology, climate, flora, fauna, and upcycling build log.
   - A right-aligned infobox compiling quick facts and the list of recycled materials used to represent that biome in the physical model.
+- **Flawless Mobile Responsiveness**: The application dynamically adapts to all viewports (mobile, tablet, desktop). Using pure media queries:
+  - The navigation sidebar collapses into an intuitive hamburger menu on mobile.
+  - The right infobox stacks seamlessly below the main content to avoid layout breakage or horizontal scrolling.
+  - All interactive controls are optimized with touch targets matching standard accessibility guidelines.
 - **Dynamic Biome Theming**: The application transitions its aesthetics seamlessly. Light/dark modes and accent pastel gradients shift automatically based on the selected biome (e.g., cool deep blues for Aquatic, lush greens for Tropical Forest, sandy warm yellows for Desert).
 - **Sticky Podcast Player**: An audio guide anchored at the bottom of the screen, allowing users to listen to narrated scientific journeys through each biome as they browse.
 - **Interactive Learning Tools**:
@@ -31,7 +35,7 @@ At its core, **Biosphere Journey** is a message of environmental protection, res
 
 Following the **"Antigravity"** philosophy of zero-dependency, high-performance, and lightweight web development, this project is built entirely on:
 - **HTML5**: Semantic tags to ensure readability, structure, and accessibility.
-- **CSS3**: Vanilla stylesheets featuring CSS Variables (`:root`) for layout, dark/light modes, and dynamic biome-specific transitions.
+- **CSS3**: Vanilla stylesheets featuring CSS Variables (`:root`) for layout, dark/light modes, and dynamic biome-specific transitions. Responsive design is achieved purely via Media Queries, Flexbox, and CSS Grid.
 - **Vanilla JavaScript**: Pure JS (ES6+) for direct DOM manipulation, event listener handling, state management, and interaction logic. No build steps, no packaging tools, no external frameworks.
 
 ---

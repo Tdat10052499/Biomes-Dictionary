@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Embark on the Biosphere Journey - an interactive 3D educational diorama showcasing Earth's 5 major biomes, built entirely from recycled household waste to promote environmental protection.">
+    <title>Biosphere Journey - Interactive Recycled Diorama</title>
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <!-- Top Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo" id="header-logo">
+                <span class="logo-icon">🌿</span>
+                <span class="logo-text">Biosphere Journey</span>
+            </a>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="#" class="nav-link active">Home</a></li>
+                    <li><a href="#about-biomes" class="nav-link">About the Biomes</a></li>
+                    <li><a href="#team" class="nav-link">The Team</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="hero">
+            <div class="hero-container">
+                <div class="hero-content reveal-on-scroll">
+                    <span class="hero-badge">🎓 Educational Diorama Project</span>
+                    <h1 class="hero-title">Biosphere Journey</h1>
+                    <p class="hero-description">
+                        Explore an interactive, 3D educational diorama showcasing Earth's five major biomes. Crafted <strong>100% from household recycled waste</strong>—such as plastic bottles, cardboard, and nylon bags—this project raises awareness about environmental protection, highlighting the beauty of ecological diversity and the potential of creative upcycling.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#about-biomes" class="btn btn-primary">Explore Biomes</a>
+                        <a href="#team" class="btn btn-secondary">Meet the Team</a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual reveal-on-scroll delay-200">
+                    <div class="image-card-wrapper">
+                        <div class="image-card">
+                            <img src="assets/images/diorama_placeholder.png" alt="3D Square Recycled Diorama showcasing Earth's 5 major biomes" class="diorama-img" loading="eager">
+                            <div class="image-overlay">
+                                <span>3D Recycled Diorama ("Bộ cờ")</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dummy section to link to and provide scrolling depth -->
+        <section class="info-divider-section" id="about-biomes">
+            <div class="divider-container reveal-on-scroll">
+                <h2>The 5 Major Biomes</h2>
+                <p>Delve into the distinct characteristics, flora, fauna, and recycled materials that form each environment.</p>
+                <div class="biomes-quick-grid">
+                    <div class="biome-card-mini aquatic">
+                        <span class="biome-icon">🌊</span>
+                        <h3>Aquatic</h3>
+                        <p>Nylon bag currents & plastic bottle reefs.</p>
+                    </div>
+                    <div class="biome-card-mini rainforest">
+                        <span class="biome-icon">🌳</span>
+                        <h3>Tropical Forest</h3>
+                        <p>Cardboard canopies & paper foliage.</p>
+                    </div>
+                    <div class="biome-card-mini desert">
+                        <span class="biome-icon">🌵</span>
+                        <h3>Desert</h3>
+                        <p>Styrofoam dunes & plastic bottle cacti.</p>
+                    </div>
+                    <div class="biome-card-mini grassland">
+                        <span class="biome-icon">🌾</span>
+                        <h3>Grassland</h3>
+                        <p>Shredded packaging plains.</p>
+                    </div>
+                    <div class="biome-card-mini tundra">
+                        <span class="biome-icon">❄️</span>
+                        <h3>Tundra</h3>
+                        <p>Styrofoam glaciers & cotton ice sheets.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section" id="team">
+            <div class="team-container">
+                <div class="section-header reveal-on-scroll">
+                    <span class="section-badge">Behind the Project</span>
+                    <h2 class="section-title">The Development Team</h2>
+                    <p class="section-subtitle">Meet the visionaries, creators, and advocates driving environmental literacy through upcycling.</p>
+                </div>
+                
+                <div class="team-grid">
+                    <!-- Member 1 -->
+                    <div class="team-card reveal-on-scroll delay-100">
+                        <div class="avatar-container">
+                            <div class="avatar avatar-1">
+                                <span>AN</span>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Nguyen Hoang Anh</h3>
+                            <span class="member-role">Lead Architect & Concept Designer</span>
+                            <p class="member-bio">Designed the physical layout and structural framework of the 3D diorama using recycled cardboard.</p>
+                        </div>
+                    </div>
+
+                    <!-- Member 2 -->
+                    <div class="team-card reveal-on-scroll delay-200">
+                        <div class="avatar-container">
+                            <div class="avatar avatar-2">
+                                <span>BT</span>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Tran Le Bao Thy</h3>
+                            <span class="member-role">Recycling Specialist & Biome Stylist</span>
+                            <p class="member-bio">Spearheaded materials research, converting household plastic waste and bags into lush forest and desert landscapes.</p>
+                        </div>
+                    </div>
+
+                    <!-- Member 3 -->
+                    <div class="team-card reveal-on-scroll delay-300">
+                        <div class="avatar-container">
+                            <div class="avatar avatar-3">
+                                <span>MD</span>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Pham Minh Duy</h3>
+                            <span class="member-role">Content Writer & Researcher</span>
+                            <p class="member-bio">Authored educational descriptions, ecological stats, and scientific guides for all five biomes.</p>
+                        </div>
+                    </div>
+
+                    <!-- Member 4 -->
+                    <div class="team-card reveal-on-scroll delay-400">
+                        <div class="avatar-container">
+                            <div class="avatar avatar-4">
+                                <span>TL</span>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Le Duc Tuan Lam</h3>
+                            <span class="member-role">Web Developer</span>
+                            <p class="member-bio">Built the responsive, interactive encyclopedia and digital companion app for the diorama.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-branding">
+                <span class="footer-logo">🌿 Biosphere Journey</span>
+                <p class="footer-tagline">Rethinking waste, preserving our home.</p>
+            </div>
+            
+            <div class="footer-academic">
+                <p class="course-info">Course: Human and Environment</p>
+                <p class="class-info">Class: 253_72HMAN10043_12</p>
+                <p class="lecturer-info">Lecturer: Dr. Võ Thị Minh Hoàng</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Biosphere Journey. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

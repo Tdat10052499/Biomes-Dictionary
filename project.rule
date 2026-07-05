@@ -12,22 +12,32 @@ This workspace operates under strict development guidelines. All contributors mu
 
 ---
 
-## 2. CSS & Styling Standards
+## 2. Flawless Mobile Responsiveness & Layout
+- **Mobile-First / Fluid Design**:
+  - Implement layouts using Flexbox and CSS Grid. Avoid fixed widths (`px`) for layout wrappers; use relative units (`%`, `vw`, `vh`, `rem`, `em`).
+  - The design must automatically adapt to any screen size without layout breaks, overlapping text, or horizontal scrolling errors.
+- **Media Queries & Breakpoints**:
+  - Use custom CSS Media Queries at standard breakpoints (e.g., `480px`, `768px`, `1024px`) to restructure the layout.
+  - **Sidebar adaptation**: Collapse the left navigation sidebar into a toggleable hamburger menu on mobile viewports (< 768px).
+  - **Infobox adaptation**: Stack the right-aligned Wikipedia-style infobox underneath the main center content on mobile viewports (< 1024px).
+- **Touch Targets & Interactive elements**:
+  - Maintain a minimum touch target size of `44px x 44px` for all buttons, links, and hotspot nodes.
+  - Implement hover effects inside `@media (hover: hover)` queries to prevent sticky touch states on mobile devices.
+
+---
+
+## 3. CSS & Styling Standards
 - **Global Theme & Variables**: 
   - Manage all styling tokens using CSS variables (`:root`).
   - Provide root variables for Light Mode and Dark Mode (activated via `data-theme` or a `.dark` class on `<html>`/`<body>`).
 - **Dynamic Biome Theming**:
   - Implement CSS variables for the dynamic accent colors and pastel gradients (e.g., `--accent-color`, `--biome-gradient`).
   - Override these variables dynamically based on the active biome (using classes like `.theme-aquatic`, `.theme-tropical`, `.theme-desert`, `.theme-grassland`, `.theme-tundra` on a high-level wrapper or `<body>`).
-- **Responsive Layout**:
-  - Use modern CSS Layouts: Flexbox and Grid.
-  - Implement a fluid, responsive Wikipedia-inspired layout (left navigation sidebar, center main content, right-aligned infobox).
-  - Use Media Queries to adjust the layout elegantly for tablet and mobile viewports (e.g., collapsing the sidebar and infobox into a single column).
 
 ---
 
-## 3. Markup & Semantic HTML
-- **Document Structure**: Maintain a single, main `index.html` structure (or cleanly mapped views). Use semantic HTML5 elements: `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>`.
+## 4. Markup & Semantic HTML
+- **Document Structure**: Maintain a single, main `index.html` structure. Use semantic HTML5 elements: `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>`.
 - **Accessibility (a11y)**:
   - Use correct heading hierarchies (`<h1>` -> `<h2>` -> `<h3>`).
   - Provide `alt` text for images.
@@ -36,7 +46,7 @@ This workspace operates under strict development guidelines. All contributors mu
 
 ---
 
-## 4. Javascript Rules
+## 5. Javascript Rules
 - **DOM Manipulation**:
   - Use modern, direct API methods: `querySelector`, `querySelectorAll`, `createElement`, `classList` (`add`, `remove`, `toggle`).
   - Keep JavaScript clean and decoupled from layout structure where possible.
