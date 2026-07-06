@@ -164,7 +164,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 shadow = wikiContent.attachShadow({ mode: 'open' });
             }
 
-            const response = await fetch(`https://en.wikipedia.org/w/api.php?action=parse&page=${topic}&format=json&origin=*&disableeditsection=true`);
+            const lang = window.getWikiLanguage ? window.getWikiLanguage() : 'vi';
+            const resolvedTopic = window.getTranslatedTopic ? window.getTranslatedTopic(topic) : topic;
+            const response = await fetch(`https://${lang}.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(resolvedTopic)}&format=json&origin=*&disableeditsection=true`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -247,6 +249,10 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             const topic = topicMap[pageName] || 'Forest';
             fetchWikipediaData(topic);
+            
+            document.addEventListener('languageChanged', () => {
+                fetchWikipediaData(topic);
+            });
         }
     }
 });

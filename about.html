@@ -14,6 +14,7 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="i18n.js" defer></script>
     <script defer src="script.js"></script>
 </head>
 
@@ -34,11 +35,17 @@
             <!-- Navigation Links -->
             <nav class="nav-menu" id="nav-menu">
                 <ul>
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="dictionary.html" class="nav-link">Biomes dictionary</a></li>
-                    <li><a href="about.html" class="nav-link active">About us</a></li>
+                    <li><a href="index.html" class="nav-link" data-i18n="nav_home">Home</a></li>
+                    <li><a href="dictionary.html" class="nav-link" data-i18n="nav_dictionary">Biomes dictionary</a></li>
+                    <li><a href="about.html" class="nav-link active" data-i18n="nav_about">About us</a></li>
                 </ul>
             </nav>
+
+            <!-- Language Switcher -->
+            <div class="lang-switcher">
+                <button class="lang-btn" data-lang="vi">VI</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
         </div>
     </header>
 
@@ -50,19 +57,19 @@
                 <!-- Part 1: University & Course Info -->
                 <div class="course-info-card reveal-on-scroll">
                     <img src="images/logo.png" alt="Biosphere Journey Logo" class="about-hero-logo">
-                    <span class="section-badge">Project Background</span>
-                    <h1 class="course-title">Trường Đại học Văn Lang<br><span class="course-subtitle-highlight">Môn học Con người & Môi trường</span></h1>
-                    <p class="instructor-name">Giảng viên hướng dẫn: Cô Võ Thị Minh Hoàng</p>
-                    <p class="course-description">
+                    <span class="section-badge" data-i18n="about_badge">Project Background</span>
+                    <h1 class="course-title" data-i18n="about_title">Trường Đại học Văn Lang<br><span class="course-subtitle-highlight" data-i18n="about_title_sub">Môn học Con người & Môi trường</span></h1>
+                    <p class="instructor-name" data-i18n="about_instructor">Giảng viên hướng dẫn: Cô Võ Thị Minh Hoàng</p>
+                    <p class="course-description" data-i18n="about_desc">
                         Dự án "Biosphere Journey" được thực hiện trong khuôn khổ môn học Human and Environment tại Trường Đại học Văn Lang. Thông qua dự án này, chúng tôi áp dụng các kiến thức cốt lõi về phát triển bền vững (Sustainable Development), biến đổi khí hậu (Climate Change), tăng trưởng xanh (Green Growth) và kinh tế tuần hoàn (Circular Economy) vào thực tiễn. Quá trình làm sa bàn tái chế không chỉ giúp nhóm rèn luyện tư duy phản biện, kỹ năng làm việc nhóm mà còn lan tỏa ý thức bảo vệ môi trường đến cộng đồng.
                     </p>
                 </div>
 
                 <!-- Part 2: The Team -->
                 <div class="team-section-header reveal-on-scroll">
-                    <span class="section-badge">Behind the Project</span>
-                    <h2 class="section-title">Thành Viên Nhóm</h2>
-                    <p class="section-subtitle">Meet the visionaries, creators, and advocates driving environmental literacy through upcycling.</p>
+                    <span class="section-badge" data-i18n="team_behind_badge">Behind the Project</span>
+                    <h2 class="section-title" data-i18n="team_behind_title">Thành Viên Nhóm</h2>
+                    <p class="section-subtitle" data-i18n="team_behind_subtitle">Meet the visionaries, creators, and advocates driving environmental literacy through upcycling.</p>
                 </div>
 
                 <div class="team-grid">
@@ -124,9 +131,9 @@
 
                 <!-- Part 3: The Making Process -->
                 <div class="process-section reveal-on-scroll">
-                    <span class="section-badge">How It's Made</span>
-                    <h2 class="section-title">Quá Trình Thực Hiện Sản Phẩm</h2>
-                    <p class="section-subtitle">Hành trình biến rác thải tái chế thành các mô hình sa bàn sinh quyển.</p>
+                    <span class="section-badge" data-i18n="process_badge">How It's Made</span>
+                    <h2 class="section-title" data-i18n="process_title">Quá Trình Thực Hiện Sản Phẩm</h2>
+                    <p class="section-subtitle" data-i18n="process_subtitle">Hành trình biến rác thải tái chế thành các mô hình sa bàn sinh quyển.</p>
                     
                     <div class="process-gallery">
                         <!-- Step 1 -->
@@ -202,13 +209,13 @@
             <!-- Column 1: About the Project -->
             <div class="footer-column footer-about">
                 <h4 class="footer-title">Biosphere Journey</h4>
-                <p class="footer-desc">An interactive 3D educational diorama showcasing Earth's 4 major biomes. Handcrafted entirely from household recycled waste to raise environmental awareness and promote creative upcycling.</p>
-                <p class="footer-academic-info">Course: Human and Environment | Class: 253_72HMAN10043_12 | Lecturer: Dr. Võ Thị Minh Hoàng</p>
+                <p class="footer-desc" data-i18n="footer_desc">An interactive 3D educational diorama showcasing Earth's 4 major biomes. Handcrafted entirely from household recycled waste to raise environmental awareness and promote creative upcycling.</p>
+                <p class="footer-academic-info" data-i18n="footer_academic">Course: Human and Environment | Class: 253_72HMAN10043_12 | Lecturer: Dr. Võ Thị Minh Hoàng</p>
             </div>
             
             <!-- Column 2: Explore Biomes -->
             <div class="footer-column footer-nav">
-                <h4 class="footer-title">Explore Biomes</h4>
+                <h4 class="footer-title" data-i18n="footer_explore">Explore Biomes</h4>
                 <ul class="footer-links">
                     <li><a href="ocean.html">Aquatic / Ocean Biome</a></li>
                     <li><a href="forest.html">Tropical Forest Biome</a></li>
@@ -219,11 +226,11 @@
             
             <!-- Column 3: Quick Links -->
             <div class="footer-column footer-nav">
-                <h4 class="footer-title">Quick Links</h4>
+                <h4 class="footer-title" data-i18n="footer_quick">Quick Links</h4>
                 <ul class="footer-links">
-                    <li><a href="index.html">Home Page</a></li>
-                    <li><a href="dictionary.html">Biomes Dictionary</a></li>
-                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="index.html" data-i18n="nav_home">Home Page</a></li>
+                    <li><a href="dictionary.html" data-i18n="nav_dictionary">Biomes Dictionary</a></li>
+                    <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
                 </ul>
             </div>
         </div>
@@ -231,8 +238,8 @@
         <!-- Bottom Bar -->
         <div class="footer-bottom">
             <div class="footer-bottom-container">
-                <span class="copyright-text">&copy; 2026 Biosphere Journey. All rights reserved.</span>
-                <a href="#top" class="back-to-top">↑ Back to Top</a>
+                <span class="copyright-text" data-i18n="footer_copyright">&copy; 2026 Biosphere Journey. All rights reserved.</span>
+                <a href="#top" class="back-to-top" data-i18n="footer_back_to_top">↑ Back to Top</a>
             </div>
         </div>
     </footer>

@@ -199,6 +199,46 @@ a {
     gap: 2rem;
 }
 
+/* Sleek Pill-shaped Language Switcher */
+.lang-switcher {
+    display: flex !important;
+    align-items: center !important;
+    background: rgba(44, 66, 48, 0.08) !important;
+    padding: 4px !important;
+    border-radius: 30px !important;
+    border: 1px solid rgba(44, 66, 48, 0.1) !important;
+    gap: 2px !important;
+    margin-left: 20px !important;
+    transition: all 0.3s ease !important;
+    z-index: 1000;
+}
+
+.lang-btn {
+    background: transparent !important;
+    border: none !important;
+    color: var(--color-forest-dark, #2c4230) !important;
+    font-family: var(--font-heading) !important;
+    font-size: 0.8rem !important;
+    font-weight: 700 !important;
+    padding: 6px 12px !important;
+    border-radius: 20px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    letter-spacing: 0.5px !important;
+    line-height: 1 !important;
+    min-height: auto !important;
+}
+
+.lang-btn.active {
+    background: var(--color-forest-dark, #2c4230) !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(44, 66, 48, 0.2) !important;
+}
+
+.lang-btn:hover:not(.active) {
+    background: rgba(44, 66, 48, 0.05) !important;
+}
+
 .nav-link {
     font-weight: 500;
     font-size: 0.95rem;
@@ -1898,5 +1938,19 @@ a {
         gap: 1.25rem !important;
         text-align: center !important;
         padding: 0 1.5rem !important;
+    }
+}
+
+/* Mobile Language Switcher Alignment Helper */
+@media screen and (max-width: 768px) {
+    .header-container {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+    .lang-switcher {
+        margin-left: auto !important;
+        margin-right: 15px !important;
+        transform: scale(0.9) !important;
     }
 }
