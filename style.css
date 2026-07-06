@@ -193,6 +193,11 @@ a {
     object-fit: contain !important;
 }
 
+.nav-menu {
+    display: flex !important;
+    align-items: center !important;
+}
+
 .nav-menu ul {
     list-style: none;
     display: flex;
@@ -1943,14 +1948,16 @@ a {
 
 /* Mobile Language Switcher Alignment Helper */
 @media screen and (max-width: 768px) {
-    .header-container {
+    .nav-menu {
         display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        gap: 3.5rem !important;
     }
     .lang-switcher {
-        margin-left: auto !important;
-        margin-right: 15px !important;
-        transform: scale(0.9) !important;
+        margin-left: 0.25rem !important;
+        margin-right: 0 !important;
+        transform: scale(1.05) !important;
     }
 }
