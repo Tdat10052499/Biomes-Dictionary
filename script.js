@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
             navToggle.setAttribute('aria-expanded', !isExpanded);
             navMenu.classList.toggle('active');
-            
+
             // Prevent body scroll when mobile menu is open
             document.body.style.overflow = !isExpanded ? 'hidden' : '';
         });
@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Close menu when clicking outside of it
         document.addEventListener('click', (e) => {
-            if (navMenu.classList.contains('active') && 
-                !navMenu.contains(e.target) && 
+            if (navMenu.classList.contains('active') &&
+                !navMenu.contains(e.target) &&
                 !navToggle.contains(e.target)) {
                 navToggle.setAttribute('aria-expanded', 'false');
                 navMenu.classList.remove('active');
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     const cleanPath = (path) => path.replace(/\.html$/, '').split('/').pop() || 'index';
     const currentPath = cleanPath(window.location.pathname);
-    
+
     navLinks.forEach(link => {
         const linkPath = cleanPath(link.getAttribute('href') || '');
         if (linkPath === currentPath) {
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const tracks = {
         ocean: { name: 'Oceanic Journeys Audio Guide', src: 'assets/audio/ocean.mp3' },
-        forest: { name: 'Tropical Canopy Explorations', src: 'assets/audio/forest.mp3' },
+        forest: { name: 'Tropical Canopy Explorations', src: 'assets/audio/forest.m4a' },
         desert: { name: 'Desert Survival Audio Guide', src: 'assets/audio/desert.mp3' },
         grassland: { name: 'Sustaining the Open Grasslands', src: 'assets/audio/grassland.mp3' },
         tundra: { name: 'Tundra Cold Wilderness Walk', src: 'assets/audio/tundra.mp3' }
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
-        
+
         audioEl.addEventListener('ended', () => {
             updatePlayState(false);
         });
@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // WIKIPEDIA CONTENT FETCH (Full Wikipedia Parse API)
     // ==========================================================================
     const wikiContent = document.getElementById('wiki-content');
-    
+
     async function fetchWikipediaData(topic) {
         if (!wikiContent) return;
         try {
