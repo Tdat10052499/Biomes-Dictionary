@@ -1,0 +1,147 @@
+@import "style.css";
+
+/* ==========================================================================
+   DESERT MOBILE SPECIFIC STYLES (READABILITY FOCUS)
+   ========================================================================== */
+
+body {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding-bottom: 100px !important; /* space for bottom podcast player */
+    overflow-x: hidden !important;
+    background: #fafafa !important; /* soft off-white background for high text contrast */
+}
+
+.container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 5.5rem 20px 3rem 20px !important; /* comfortable side margins */
+    box-sizing: border-box !important;
+    margin: 0 auto !important;
+}
+
+.wiki-grid.no-sidebar {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    width: 100% !important;
+}
+
+/* High contrast, breathable white card for the article text */
+.wiki-main {
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.04) !important;
+    border-radius: 16px !important;
+    padding: 24px 20px !important;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.02) !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Refined "Quick Facts" card (pale earth background with left-accent border) */
+.wiki-infobox {
+    background: #fbf8f3 !important; /* pale desert sand */
+    border: 1px solid rgba(168, 118, 62, 0.08) !important;
+    border-left: 5px solid #a8763e !important; /* matches --color-earth-dark */
+    border-radius: 12px !important;
+    padding: 1rem !important; /* responsive padding */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03) !important;
+    margin: 20px 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+}
+
+.infobox-title {
+    background-color: #a8763e !important; /* matches --color-earth-dark */
+    color: #ffffff !important;
+    font-size: 1.15rem !important;
+    padding: 8px !important;
+    border-radius: 6px !important;
+    font-weight: 700 !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Modern Flexbox list styles */
+.quick-facts-card {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+}
+
+.fact-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    align-items: baseline !important;
+    gap: 8px !important;
+    border-bottom: 1px solid rgba(168, 118, 62, 0.06) !important;
+    padding-bottom: 8px !important;
+    width: 100% !important;
+}
+
+.fact-label {
+    font-weight: 700 !important;
+    color: #a8763e !important;
+    font-size: 0.9rem !important;
+}
+
+.fact-value {
+    color: #5c4a37 !important;
+    font-size: 0.9rem !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    max-width: 100% !important;
+}
+
+/* Orientation Switch Fix: Row flow in landscape */
+@media screen and (orientation: landscape) {
+    .quick-facts-card {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 20px !important;
+    }
+    .quick-facts-card .fact-row {
+        flex: 1 1 calc(50% - 10px) !important;
+        border-bottom: 1px solid rgba(168, 118, 62, 0.06) !important;
+        padding-bottom: 8px !important;
+    }
+}
+
+/* Fallback light DOM Wikipedia elements for mobile layout safety */
+#wiki-content img, 
+#wiki-content figure, 
+#wiki-content .thumb, 
+#wiki-content .thumbinner,
+#wiki-content .tright,
+#wiki-content .tleft {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    float: none !important;
+    margin: 15px auto !important;
+    object-fit: contain !important;
+    box-sizing: border-box !important;
+}
+
+#wiki-content table,
+#wiki-content table.infobox,
+#wiki-content table.wikitable {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    white-space: nowrap !important;
+    margin-bottom: 20px !important;
+}
+
+#wiki-content .navbox,
+#wiki-content .ambox,
+#wiki-content .metadata,
+#wiki-content .editsection,
+#wiki-content .noprint {
+    display: none !important;
+}

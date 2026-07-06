@@ -1,0 +1,127 @@
+@import "style.css";
+
+/* ==========================================================================
+   DESKTOP ENVIRONMENT SPECIFIC STYLES
+   ========================================================================== */
+
+body {
+    width: 100% !important;
+    margin: 0 !important;
+    padding-bottom: 120px !important; /* space for player bottom */
+}
+
+.container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 7rem 2.5rem 5rem 2.5rem !important;
+    box-sizing: border-box !important;
+}
+
+.wiki-main {
+    padding: 3rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Spacious 2-Column CSS Grid Layout */
+.desktop-wrapper {
+    display: grid !important;
+    grid-template-columns: 2.5fr 1fr !important;
+    gap: 40px !important;
+    align-items: start !important;
+    width: 100% !important;
+}
+
+/* Custom Infobox Visual Swapping: Move to Right Column (column 2) */
+.wiki-infobox {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-left: 4px solid var(--color-forest-dark) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    box-sizing: border-box !important;
+}
+
+/* Main Wikipedia content visually swaps to Left Column (column 1) */
+#wiki-content {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+}
+
+.wiki-title {
+    font-size: 2.75rem !important;
+    margin-bottom: 2.5rem !important;
+}
+
+/* Centered bottom player with curved edges matching the desktop grid width */
+.podcast-player {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    border-radius: 16px 16px 0 0 !important;
+    border: 1px solid var(--glass-border) !important;
+    border-bottom: none !important;
+    z-index: 999;
+}
+
+/* Large monitors typography boost */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1300px !important;
+    }
+
+    .podcast-player {
+        max-width: 1300px !important;
+    }
+}
+
+/* ==========================================================================
+   WIKIPEDIA CONTENT TAMING (DESKTOP SPECIFIC OVERRIDES)
+   ========================================================================== */
+
+/* Wikipedia Images & Thumbs sizing and wrapping */
+#wiki-content img, 
+#wiki-content figure, 
+#wiki-content .thumb, 
+#wiki-content .thumbinner,
+#wiki-content .tright,
+#wiki-content .tleft {
+    max-width: 350px !important;
+    width: auto !important;
+    height: auto !important;
+    float: right !important;
+    margin: 10px 0 20px 25px !important;
+    clear: right !important;
+    object-fit: contain !important;
+}
+
+/* Injected Wikipedia Infoboxes */
+#wiki-content table.infobox,
+#wiki-content .infobox {
+    max-width: 350px !important;
+    width: 350px !important;
+    float: right !important;
+    clear: right !important;
+    margin: 0 0 20px 20px !important;
+    border-collapse: collapse;
+}
+
+/* Wide Data Tables scrollability */
+#wiki-content table:not(.infobox),
+#wiki-content table.wikitable {
+    width: 100% !important;
+    display: block !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    margin-bottom: 20px !important;
+}
+

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Learn about the Ocean Biome - Mobile version.">
+    <title>Ocean Biome - Biosphere Encyclopedia</title>
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ocean-mobile.css">
+    <script defer src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const wikiContent = document.getElementById('wiki-content');
+            if (!wikiContent) return;
+            
+            async function fetchWikipediaMobile(topic) {
+                try {
+                    let shadow = wikiContent.shadowRoot;
+                    if (!shadow) {
+                        shadow = wikiContent.attachShadow({ mode: 'open' });
+                    }
+                    const response = await fetch(`https://en.wikipedia.org/w/api.php?action=parse&page=${topic}&format=json&origin=*&disableeditsection=true`);
+                    if (!response.ok) throw new Error('HTTP Error');
+                    const data = await response.json();
+                    if (data.parse && data.parse.text && data.parse.text['*']) {
+                        // Create temporary div for content sanitisation
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = data.parse.text['*'];
+
+                        // Remove citation brackets and references
+                        tempDiv.querySelectorAll('.reference, .reflist, .refbegin, .reflist-talk').forEach(el => el.remove());
+                        
+                        // Remove wiki edit links
+                        tempDiv.querySelectorAll('.mw-editsection').forEach(el => el.remove());
+                        
+                        // Remove empty paragraph elements to reduce dead spaces
+                        tempDiv.querySelectorAll('p').forEach(p => {
+                            if (p.textContent.trim() === '' && !p.querySelector('img') && !p.querySelector('iframe')) {
+                                p.remove();
+                            }
+                        });
+                        tempDiv.querySelectorAll('.mw-empty-elt').forEach(el => el.remove());
+
+                        const shadowStyle = `
+                            <style>
+                                * {
+                                    box-sizing: border-box !important;
+                                    max-width: 100% !important;
+                                }
+                                img, figure, .thumb, .thumbinner, .tright, .tleft {
+                                    width: 100% !important;
+                                    max-width: 100% !important;
+                                    height: auto !important;
+                                    float: none !important;
+                                    margin: 15px auto !important;
+                                    object-fit: contain;
+                                    border-radius: 8px;
+                                }
+                                table, .infobox {
+                                    display: block !important;
+                                    width: 100% !important;
+                                    float: none !important;
+                                    overflow-x: auto !important;
+                                    -webkit-overflow-scrolling: touch;
+                                    white-space: nowrap;
+                                    margin-bottom: 20px !important;
+                                }
+                                .navbox, .ambox, .metadata, .editsection, .noprint, .magnify {
+                                    display: none !important; /* Hide Wikipedia junk */
+                                }
+                                p, li {
+                                    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                                    font-size: 17px !important;
+                                    line-height: 1.7 !important;
+                                    color: #333333 !important;
+                                    margin-bottom: 20px !important;
+                                    white-space: normal;
+                                }
+                                a {
+                                    color: #0077b6; /* matches --color-ocean-dark */
+                                    text-decoration: underline;
+                                }
+                                h2 {
+                                    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                                    font-size: 24px !important;
+                                    margin-top: 35px !important;
+                                    margin-bottom: 15px !important;
+                                    color: #111 !important;
+                                    border-bottom: 2px solid #0077b6; /* matches --color-ocean-dark */
+                                    padding-bottom: 5px;
+                                }
+                                h3 {
+                                    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                                    font-size: 20px !important;
+                                    margin-top: 25px !important;
+                                    margin-bottom: 10px !important;
+                                    color: #222 !important;
+                                }
+                            </style>
+                        `;
+                        shadow.innerHTML = shadowStyle + tempDiv.innerHTML;
+                    } else {
+                        shadow.innerHTML = `<p>No information found for "${topic}".</p>`;
+                    }
+                } catch (error) {
+                    console.error('Error fetching mobile Wiki data:', error);
+                    const shadow = wikiContent.shadowRoot || wikiContent.attachShadow({ mode: 'open' });
+                    shadow.innerHTML = `<p style="color: #a28b75; font-weight: 500;">Failed to load biome details. Please check connection.</p>`;
+                }
+            }
+            fetchWikipediaMobile('Ocean');
+        });
+    </script>
+</head>
+<body class="wiki-page">
+    <!-- Top Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo" id="header-logo">
+                <span class="logo-icon">🌿</span>
+                <span class="logo-text">Biosphere Journey</span>
+            </a>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="dictionary.html" class="nav-link">Biomes dictionary</a></li>
+                    <li><a href="about.html" class="nav-link">About us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="dictionary.html" class="back-btn reveal-on-scroll">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Back to Dictionary
+        </a>
+        
+        <div class="wiki-grid no-sidebar">
+            <article class="wiki-main reveal-on-scroll delay-100">
+                <h1 class="wiki-title">Ocean Biome</h1>
+                
+                <div class="desktop-wrapper">
+                    <!-- Quick Facts / Recycled Materials Card -->
+                    <aside class="wiki-infobox reveal-on-scroll delay-200">
+                        <h2 class="infobox-title">Thông tin sa bàn</h2>
+                        <div class="infobox-image" style="background-image: url('https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?auto=format&fit=crop&w=400&q=80');"></div>
+                        <div class="quick-facts-card">
+                            <div class="fact-row">
+                                <span class="fact-label">Area</span>
+                                <span class="fact-value">Covers &gt; 70% of Earth's surface and contains 97% of its volume.</span>
+                            </div>
+                            <div class="fact-row">
+                                <span class="fact-label">Zones</span>
+                                <span class="fact-value">Intertidal, Pelagic, Benthic, and Abyssal.</span>
+                            </div>
+                            <div class="fact-row">
+                                <span class="fact-label">Recycled Materials</span>
+                                <span class="fact-value">Layered blue plastic bags, blue bottle caps, and clear plastic wrap.</span>
+                            </div>
+                            <div class="fact-row">
+                                <span class="fact-label">Primary Flora</span>
+                                <span class="fact-value">Phytoplankton, kelp, algae, seagrass</span>
+                            </div>
+                            <div class="fact-row">
+                                <span class="fact-label">Primary Fauna</span>
+                                <span class="fact-value">Fish, whales, sharks, coral reefs, crustaceans</span>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <div id="wiki-content" class="wiki-body">
+                        <div class="spinner-container" id="wiki-spinner">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Sticky Podcast Player -->
+    <div class="podcast-player" id="podcast-player">
+        <div class="player-container">
+            <button class="player-btn" id="podcast-play-btn" aria-label="Play Podcast">
+                <span class="play-icon">▶</span>
+            </button>
+            <div class="player-info">
+                <span class="player-title">🎧 Podcast: Exploring the Ocean Biome</span>
+                <span class="player-track">Aquatic / Ocean Guide</span>
+            </div>
+            <div class="player-controls">
+                <select id="podcast-track-select" class="track-select">
+                    <option value="ocean" selected>1. Aquatic / Ocean Guide</option>
+                    <option value="forest">2. Tropical Forest Guide</option>
+                    <option value="desert">3. Desert Guide</option>
+                    <option value="grassland">4. Grassland Guide</option>
+                    <option value="tundra">5. Tundra Guide</option>
+                </select>
+                <audio id="podcast-audio" src="assets/audio/ocean.mp3"></audio>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <p class="footer-academic-info">Course: Human and Environment | Class: 253_72HMAN10043_12 | Lecturer: Dr. Võ Thị Minh Hoàng</p>
+            <p class="footer-copyright">&copy; 2026 Biosphere Journey. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

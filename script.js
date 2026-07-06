@@ -158,58 +158,95 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchWikipediaData(topic) {
         if (!wikiContent) return;
         try {
+            // Attach shadow root to isolate Wikipedia content and styles
+            let shadow = wikiContent.shadowRoot;
+            if (!shadow) {
+                shadow = wikiContent.attachShadow({ mode: 'open' });
+            }
+
             const response = await fetch(`https://en.wikipedia.org/w/api.php?action=parse&page=${topic}&format=json&origin=*&disableeditsection=true`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
             if (data.parse && data.parse.text && data.parse.text['*']) {
-                // Parse HTML into a temporary DOM element for sanitization
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = data.parse.text['*'];
-
-                // 1. Remove Hardcoded Sizes & Inline Styles
-                const styledElements = tempDiv.querySelectorAll('img, figure, .thumbinner, table, .tright, .tleft');
-                styledElements.forEach(el => {
-                    el.removeAttribute('width');
-                    el.removeAttribute('height');
-                    el.removeAttribute('style');
-                });
-
-                // 2. Clean up Wikipedia Junk
-                const junkElements = tempDiv.querySelectorAll('.navbox, .ambox, .metadata, .noprint, .editsection, .magnify');
-                junkElements.forEach(el => el.remove());
-
-                // 3. Wrap Tables for Horizontal Scrolling
-                const tables = tempDiv.querySelectorAll('table');
-                tables.forEach(table => {
-                    const wrapper = document.createElement('div');
-                    wrapper.className = 'table-responsive';
-                    table.parentNode.insertBefore(wrapper, table);
-                    wrapper.appendChild(table);
-                });
-
-                // 4. Inject Sanitised HTML
-                wikiContent.innerHTML = tempDiv.innerHTML;
+                const shadowStyle = `
+                    <style>
+                        * {
+                            box-sizing: border-box !important;
+                            max-width: 100% !important;
+                        }
+                        img, figure, .thumb, .thumbinner, .tright, .tleft {
+                            width: var(--wiki-img-width, 100%) !important;
+                            max-width: var(--wiki-img-max-width, 100%) !important;
+                            height: auto !important;
+                            float: var(--wiki-img-float, none) !important;
+                            margin: var(--wiki-img-margin, 15px auto) !important;
+                            object-fit: contain;
+                        }
+                        table, .infobox {
+                            display: var(--wiki-infobox-display, block) !important;
+                            width: var(--wiki-infobox-width, 100%) !important;
+                            float: var(--wiki-infobox-float, none) !important;
+                            clear: var(--wiki-infobox-clear, none) !important;
+                            margin: var(--wiki-infobox-margin, 20px 0) !important;
+                            overflow-x: auto !important;
+                            -webkit-overflow-scrolling: touch;
+                            white-space: nowrap;
+                        }
+                        .navbox, .ambox, .metadata, .editsection, .noprint, .magnify {
+                            display: none !important; /* Hide Wikipedia junk */
+                        }
+                        p, li {
+                            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                            line-height: var(--wiki-text-line-height, 1.6);
+                            font-size: var(--wiki-text-font-size, 16px);
+                            white-space: normal;
+                            color: #2b3a2e; /* matches --text-primary */
+                        }
+                        a {
+                            color: #7a927c; /* matches --color-sage-dark */
+                            text-decoration: underline;
+                        }
+                        h2 {
+                            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                            font-size: 1.75rem;
+                            color: #2c4230; /* matches --color-forest-dark */
+                            margin: 2.25rem 0 1rem 0;
+                            border-bottom: 2px solid #c3d3c4; /* matches --color-sage */
+                            padding-bottom: 0.35rem;
+                        }
+                        h3 {
+                            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                            font-size: 1.35rem;
+                            color: #2c4230; /* matches --color-forest-dark */
+                            margin: 1.75rem 0 0.75rem 0;
+                        }
+                    </style>
+                `;
+                shadow.innerHTML = shadowStyle + data.parse.text['*'];
             } else {
-                wikiContent.innerHTML = `<p>No information found for "${topic}".</p>`;
+                shadow.innerHTML = `<p>No information found for "${topic}".</p>`;
             }
         } catch (error) {
             console.error('Error fetching Wikipedia data:', error);
-            wikiContent.innerHTML = `<p style="color: var(--color-earth-dark); font-weight: 500;">Failed to load biome details from Wikipedia. Please check your internet connection and try again.</p>`;
+            const shadow = wikiContent.shadowRoot || wikiContent.attachShadow({ mode: 'open' });
+            shadow.innerHTML = `<p style="color: #a28b75; font-weight: 500;">Failed to load biome details from Wikipedia. Please check your internet connection and try again.</p>`;
         }
     }
 
     if (wikiContent) {
         const pageName = window.location.pathname.split('/').pop().replace('.html', '');
-        const topicMap = {
-            forest: 'Forest',
-            ocean: 'Ocean',
-            desert: 'Desert',
-            grassland: 'Grassland',
-            tundra: 'Tundra'
-        };
-        const topic = topicMap[pageName] || 'Forest';
-        fetchWikipediaData(topic);
+        if (pageName !== 'forest-mobile' && pageName !== 'forest-desktop' && pageName !== 'desert-mobile' && pageName !== 'desert-desktop' && pageName !== 'ocean-mobile' && pageName !== 'ocean-desktop') {
+            const topicMap = {
+                forest: 'Forest',
+                ocean: 'Ocean',
+                desert: 'Desert',
+                grassland: 'Grassland',
+                tundra: 'Tundra'
+            };
+            const topic = topicMap[pageName] || 'Forest';
+            fetchWikipediaData(topic);
+        }
     }
 });
