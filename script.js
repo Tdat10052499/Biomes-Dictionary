@@ -149,4 +149,67 @@ document.addEventListener('DOMContentLoaded', () => {
             updatePlayState(false);
         });
     }
+
+    // ==========================================================================
+    // WIKIPEDIA CONTENT FETCH (Full Wikipedia Parse API)
+    // ==========================================================================
+    const wikiContent = document.getElementById('wiki-content');
+    
+    async function fetchWikipediaData(topic) {
+        if (!wikiContent) return;
+        try {
+            const response = await fetch(`https://en.wikipedia.org/w/api.php?action=parse&page=${topic}&format=json&origin=*&disableeditsection=true`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            if (data.parse && data.parse.text && data.parse.text['*']) {
+                // Parse HTML into a temporary DOM element for sanitization
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = data.parse.text['*'];
+
+                // 1. Remove Hardcoded Sizes & Inline Styles
+                const styledElements = tempDiv.querySelectorAll('img, figure, .thumbinner, table, .tright, .tleft');
+                styledElements.forEach(el => {
+                    el.removeAttribute('width');
+                    el.removeAttribute('height');
+                    el.removeAttribute('style');
+                });
+
+                // 2. Clean up Wikipedia Junk
+                const junkElements = tempDiv.querySelectorAll('.navbox, .ambox, .metadata, .noprint, .editsection, .magnify');
+                junkElements.forEach(el => el.remove());
+
+                // 3. Wrap Tables for Horizontal Scrolling
+                const tables = tempDiv.querySelectorAll('table');
+                tables.forEach(table => {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'table-responsive';
+                    table.parentNode.insertBefore(wrapper, table);
+                    wrapper.appendChild(table);
+                });
+
+                // 4. Inject Sanitised HTML
+                wikiContent.innerHTML = tempDiv.innerHTML;
+            } else {
+                wikiContent.innerHTML = `<p>No information found for "${topic}".</p>`;
+            }
+        } catch (error) {
+            console.error('Error fetching Wikipedia data:', error);
+            wikiContent.innerHTML = `<p style="color: var(--color-earth-dark); font-weight: 500;">Failed to load biome details from Wikipedia. Please check your internet connection and try again.</p>`;
+        }
+    }
+
+    if (wikiContent) {
+        const pageName = window.location.pathname.split('/').pop().replace('.html', '');
+        const topicMap = {
+            forest: 'Forest',
+            ocean: 'Ocean',
+            desert: 'Desert',
+            grassland: 'Grassland',
+            tundra: 'Tundra'
+        };
+        const topic = topicMap[pageName] || 'Forest';
+        fetchWikipediaData(topic);
+    }
 });
