@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -8,14 +9,16 @@
     <!-- Google Fonts for premium typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="desert-mobile.css">
     <script defer src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const wikiContent = document.getElementById('wiki-content');
             if (!wikiContent) return;
-            
+
             async function fetchWikipediaMobile(topic) {
                 try {
                     let shadow = wikiContent.shadowRoot;
@@ -32,10 +35,10 @@
 
                         // Remove citation brackets and references
                         tempDiv.querySelectorAll('.reference, .reflist, .refbegin, .reflist-talk').forEach(el => el.remove());
-                        
+
                         // Remove wiki edit links
                         tempDiv.querySelectorAll('.mw-editsection').forEach(el => el.remove());
-                        
+
                         // Remove empty paragraph elements to reduce dead spaces
                         tempDiv.querySelectorAll('p').forEach(p => {
                             if (p.textContent.trim() === '' && !p.querySelector('img') && !p.querySelector('iframe')) {
@@ -115,6 +118,7 @@
         });
     </script>
 </head>
+
 <body class="wiki-page">
     <!-- Top Header -->
     <header class="header">
@@ -123,7 +127,7 @@
                 <img src="images/logo.png" alt="Biosphere Journey Logo" class="logo-img">
                 <span class="logo-text">Biosphere Journey</span>
             </a>
-            
+
             <!-- Mobile Menu Toggle -->
             <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation menu" aria-expanded="false">
                 <span class="hamburger"></span>
@@ -142,14 +146,18 @@
 
     <main class="container">
         <a href="dictionary.html" class="back-btn reveal-on-scroll">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
             Back to Dictionary
         </a>
-        
+
         <div class="wiki-grid no-sidebar">
             <article class="wiki-main reveal-on-scroll delay-100">
                 <h1 class="wiki-title">Desert Biome</h1>
-                
+
                 <div class="desktop-wrapper">
                     <!-- Quick Facts / Recycled Materials Card -->
                     <aside class="wiki-infobox reveal-on-scroll delay-200">
@@ -166,7 +174,8 @@
                             </div>
                             <div class="fact-row">
                                 <span class="fact-label">Recycled Materials</span>
-                                <span class="fact-value">Crumpled yellow nylon bags for sand dunes, green plastic bottle caps for cacti.</span>
+                                <span class="fact-value">Crumpled yellow nylon bags for sand dunes, green plastic bottle
+                                    caps for cacti.</span>
                             </div>
                         </div>
                     </aside>
@@ -188,7 +197,7 @@
                                     <option value="forest">2. Tropical Forest Guide</option>
                                     <option value="tundra">5. Tundra Guide</option>
                                 </select>
-                                <audio id="podcast-audio" src="assets/audio/desert.mp3"></audio>
+                                <audio id="podcast-audio" src="assets/audio/desert.m4a"></audio>
                             </div>
                         </div>
                     </div>
@@ -209,10 +218,13 @@
             <!-- Column 1: About the Project -->
             <div class="footer-column footer-about">
                 <h4 class="footer-title">Biosphere Journey</h4>
-                <p class="footer-desc">An interactive 3D educational diorama showcasing Earth's 4 major biomes. Handcrafted entirely from household recycled waste to raise environmental awareness and promote creative upcycling.</p>
-                <p class="footer-academic-info">Course: Human and Environment | Class: 253_72HMAN10043_12 | Lecturer: Dr. Võ Thị Minh Hoàng</p>
+                <p class="footer-desc">An interactive 3D educational diorama showcasing Earth's 4 major biomes.
+                    Handcrafted entirely from household recycled waste to raise environmental awareness and promote
+                    creative upcycling.</p>
+                <p class="footer-academic-info">Course: Human and Environment | Class: 253_72HMAN10043_12 | Lecturer:
+                    Dr. Võ Thị Minh Hoàng</p>
             </div>
-            
+
             <!-- Column 2: Explore Biomes -->
             <div class="footer-column footer-nav">
                 <h4 class="footer-title">Explore Biomes</h4>
@@ -223,7 +235,7 @@
                     <li><a href="tundra.html">Tundra Biome</a></li>
                 </ul>
             </div>
-            
+
             <!-- Column 3: Quick Links -->
             <div class="footer-column footer-nav">
                 <h4 class="footer-title">Quick Links</h4>
@@ -234,7 +246,7 @@
                 </ul>
             </div>
         </div>
-        
+
         <!-- Bottom Bar -->
         <div class="footer-bottom">
             <div class="footer-bottom-container">
@@ -244,4 +256,5 @@
         </div>
     </footer>
 </body>
+
 </html>
