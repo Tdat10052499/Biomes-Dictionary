@@ -1,7 +1,7 @@
 @import "style.css";
 
 /* ==========================================================================
-   OCEAN MOBILE SPECIFIC STYLES (READABILITY FOCUS)
+   TUNDRA MOBILE SPECIFIC STYLES (READABILITY FOCUS)
    ========================================================================== */
 
 body {
@@ -38,11 +38,11 @@ body {
     box-sizing: border-box !important;
 }
 
-/* Refined "Quick Facts" card (pale ocean blue background with left-accent border) */
+/* Refined "Quick Facts" card (pale ice blue background with left-accent border) */
 .wiki-infobox {
-    background: #f0f7fa !important; /* pale ocean blue */
-    border: 1px solid rgba(0, 119, 182, 0.08) !important;
-    border-left: 5px solid #0077b6 !important; /* matches --color-ocean-dark */
+    background: #f1f4f6 !important; /* pale ice blue */
+    border: 1px solid rgba(92, 118, 141, 0.08) !important;
+    border-left: 5px solid #5c768d !important; /* matches --color-tundra-dark */
     border-radius: 12px !important;
     padding: 1rem !important; /* responsive padding */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03) !important;
@@ -54,7 +54,7 @@ body {
 }
 
 .infobox-title {
-    background-color: #0077b6 !important; /* matches --color-ocean-dark */
+    background-color: #5c768d !important; /* matches --color-tundra-dark */
     color: #ffffff !important;
     font-size: 1.15rem !important;
     padding: 8px !important;
@@ -77,19 +77,19 @@ body {
     justify-content: space-between !important;
     align-items: baseline !important;
     gap: 8px !important;
-    border-bottom: 1px solid rgba(0, 119, 182, 0.06) !important;
+    border-bottom: 1px solid rgba(92, 118, 141, 0.06) !important;
     padding-bottom: 8px !important;
     width: 100% !important;
 }
 
 .fact-label {
     font-weight: 700 !important;
-    color: #0077b6 !important;
+    color: #5c768d !important;
     font-size: 0.9rem !important;
 }
 
 .fact-value {
-    color: #2a4b5c !important;
+    color: #3b4d5c !important;
     font-size: 0.9rem !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
@@ -105,7 +105,7 @@ body {
     }
     .quick-facts-card .fact-row {
         flex: 1 1 calc(50% - 10px) !important;
-        border-bottom: 1px solid rgba(0, 119, 182, 0.06) !important;
+        border-bottom: 1px solid rgba(92, 118, 141, 0.06) !important;
         padding-bottom: 8px !important;
     }
 }

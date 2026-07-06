@@ -1,7 +1,7 @@
 @import "style.css";
 
 /* ==========================================================================
-   DESERT DESKTOP SPECIFIC STYLES
+   TUNDRA DESKTOP SPECIFIC STYLES
    ========================================================================== */
 
 body {
@@ -37,9 +37,9 @@ body {
     grid-row: 1 / span 2 !important;
     margin: 0 !important;
     width: 100% !important;
-    background: #fbf8f3 !important; /* pale desert sand */
-    border: 1px solid rgba(168, 118, 62, 0.08) !important;
-    border-left: 5px solid #a8763e !important; /* matches --color-earth-dark */
+    background: #f1f4f6 !important; /* pale ice blue */
+    border: 1px solid rgba(92, 118, 141, 0.08) !important;
+    border-left: 5px solid #5c768d !important; /* matches --color-tundra-dark */
     border-radius: 12px !important;
     padding: 1.5rem !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
@@ -49,7 +49,7 @@ body {
 }
 
 .infobox-title {
-    background-color: #a8763e !important;
+    background-color: #5c768d !important; /* matches --color-tundra-dark */
     color: #ffffff !important;
     font-size: 1.15rem !important;
     padding: 8px !important;
@@ -70,21 +70,21 @@ body {
     display: flex !important;
     flex-direction: column !important; /* stack values below labels in compact sidebar */
     gap: 4px !important;
-    border-bottom: 1px solid rgba(168, 118, 62, 0.06) !important;
+    border-bottom: 1px solid rgba(92, 118, 141, 0.06) !important;
     padding-bottom: 8px !important;
     width: 100% !important;
 }
 
 .fact-label {
     font-weight: 700 !important;
-    color: #a8763e !important;
+    color: #5c768d !important;
     font-size: 0.85rem !important;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .fact-value {
-    color: #5c4a37 !important;
+    color: #3b4d5c !important;
     font-size: 0.95rem !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;

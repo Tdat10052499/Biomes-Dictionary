@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (wikiContent) {
         const pageName = window.location.pathname.split('/').pop().replace('.html', '');
-        if (pageName !== 'forest-mobile' && pageName !== 'forest-desktop' && pageName !== 'desert-mobile' && pageName !== 'desert-desktop' && pageName !== 'ocean-mobile' && pageName !== 'ocean-desktop') {
+        if (pageName !== 'forest-mobile' && pageName !== 'forest-desktop' && pageName !== 'desert-mobile' && pageName !== 'desert-desktop' && pageName !== 'ocean-mobile' && pageName !== 'ocean-desktop' && pageName !== 'tundra-mobile' && pageName !== 'tundra-desktop') {
             const topicMap = {
                 forest: 'Forest',
                 ocean: 'Ocean',

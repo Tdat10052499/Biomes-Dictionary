@@ -167,6 +167,28 @@
                         </table>
                     </aside>
 
+                    <!-- Embedded Audio Player -->
+                    <div class="podcast-player" id="podcast-player">
+                        <div class="player-container">
+                            <button class="player-btn" id="podcast-play-btn" aria-label="Play Podcast">
+                                <span class="play-icon">▶</span>
+                            </button>
+                            <div class="player-info">
+                                <span class="player-title">🎧 Listen to the Forest Podcast</span>
+                                <span class="player-track">Tropical Canopy Explorations</span>
+                            </div>
+                            <div class="player-controls">
+                                <select id="podcast-track-select" class="track-select">
+                                    <option value="forest" selected>2. Tropical Forest Guide</option>
+                                    <option value="ocean">1. Aquatic / Ocean Guide</option>
+                                    <option value="desert">3. Desert Guide</option>
+                                    <option value="tundra">5. Tundra Guide</option>
+                                </select>
+                                <audio id="podcast-audio" src="assets/audio/forest.mp3"></audio>
+                            </div>
+                        </div>
+                    </div>
+
                     <div id="wiki-content" class="wiki-body">
                         <div class="spinner-container" id="wiki-spinner">
                             <div class="spinner"></div>
@@ -177,34 +199,44 @@
         </div>
     </main>
 
-    <!-- Sticky Podcast Player -->
-    <div class="podcast-player" id="podcast-player">
-        <div class="player-container">
-            <button class="player-btn" id="podcast-play-btn" aria-label="Play Podcast">
-                <span class="play-icon">▶</span>
-            </button>
-            <div class="player-info">
-                <span class="player-title">🎧 Podcast: Exploring the Forest Biome</span>
-                <span class="player-track">Tropical Canopy Explorations</span>
+    <!-- Footer -->
+    <footer class="site-footer" id="footer">
+        <div class="footer-grid-container">
+            <!-- Column 1: About the Project -->
+            <div class="footer-column footer-about">
+                <h4 class="footer-title">Biosphere Journey</h4>
+                <p class="footer-desc">An interactive 3D educational diorama showcasing Earth's 4 major biomes. Handcrafted entirely from household recycled waste to raise environmental awareness and promote creative upcycling.</p>
+                <p class="footer-academic-info">Course: Human and Environment | Class: 253_72HMAN10043_12 | Lecturer: Dr. Võ Thị Minh Hoàng</p>
             </div>
-            <div class="player-controls">
-                <select id="podcast-track-select" class="track-select">
-                    <option value="forest" selected>2. Tropical Forest Guide</option>
-                    <option value="ocean">1. Aquatic / Ocean Guide</option>
-                    <option value="desert">3. Desert Guide</option>
-                    <option value="grassland">4. Grassland Guide</option>
-                    <option value="tundra">5. Tundra Guide</option>
-                </select>
-                <audio id="podcast-audio" src="assets/audio/forest.mp3"></audio>
+            
+            <!-- Column 2: Explore Biomes -->
+            <div class="footer-column footer-nav">
+                <h4 class="footer-title">Explore Biomes</h4>
+                <ul class="footer-links">
+                    <li><a href="ocean.html">Aquatic / Ocean Biome</a></li>
+                    <li><a href="forest.html">Tropical Forest Biome</a></li>
+                    <li><a href="desert.html">Desert Biome</a></li>
+                    <li><a href="tundra.html">Tundra Biome</a></li>
+                </ul>
+            </div>
+            
+            <!-- Column 3: Quick Links -->
+            <div class="footer-column footer-nav">
+                <h4 class="footer-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home Page</a></li>
+                    <li><a href="dictionary.html">Biomes Dictionary</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
             </div>
         </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <p class="footer-academic-info">Course: Human and Environment | Class: 253_72HMAN10043_12 | Lecturer: Dr. Võ Thị Minh Hoàng</p>
-            <p class="footer-copyright">&copy; 2026 Biosphere Journey. All rights reserved.</p>
+        
+        <!-- Bottom Bar -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-container">
+                <span class="copyright-text">&copy; 2026 Biosphere Journey. All rights reserved.</span>
+                <a href="#top" class="back-to-top">↑ Back to Top</a>
+            </div>
         </div>
     </footer>
 </body>

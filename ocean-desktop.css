@@ -7,7 +7,6 @@
 body {
     width: 100% !important;
     margin: 0 !important;
-    padding-bottom: 120px !important; /* space for player bottom */
 }
 
 .container {
@@ -35,7 +34,7 @@ body {
 /* Custom Infobox Visual Swapping: Move to Right Column (column 2) */
 .wiki-infobox {
     grid-column: 2 !important;
-    grid-row: 1 !important;
+    grid-row: 1 / span 2 !important;
     margin: 0 !important;
     width: 100% !important;
     background: #f0f7fa !important; /* pale ocean blue */
@@ -94,7 +93,7 @@ body {
 /* Main Wikipedia content visually swaps to Left Column (column 1) */
 #wiki-content {
     grid-column: 1 !important;
-    grid-row: 1 !important;
+    grid-row: 2 !important;
     width: 100% !important;
 }
 
@@ -103,25 +102,9 @@ body {
     margin-bottom: 2.5rem !important;
 }
 
-/* Centered bottom player with curved edges matching the desktop grid width */
-.podcast-player {
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    border-radius: 16px 16px 0 0 !important;
-    border: 1px solid var(--glass-border) !important;
-    border-bottom: none !important;
-    z-index: 999;
-}
-
 /* Large monitors typography boost */
 @media (min-width: 1440px) {
     .container {
-        max-width: 1300px !important;
-    }
-
-    .podcast-player {
         max-width: 1300px !important;
     }
 }

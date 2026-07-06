@@ -7,7 +7,6 @@
 body {
     width: 100% !important;
     margin: 0 !important;
-    padding-bottom: 120px !important; /* space for player bottom */
 }
 
 .container {
@@ -35,12 +34,12 @@ body {
 /* Custom Infobox Visual Swapping: Move to Right Column (column 2) */
 .wiki-infobox {
     grid-column: 2 !important;
-    grid-row: 1 !important;
+    grid-row: 1 / span 2 !important;
     margin: 0 !important;
     width: 100% !important;
-    background: rgba(255, 255, 255, 0.85) !important;
-    border: 1px solid var(--glass-border) !important;
-    border-left: 4px solid var(--color-forest-dark) !important;
+    background: #fcfcfc !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-left: 5px solid var(--color-forest-dark) !important;
     border-radius: 12px !important;
     padding: 1.5rem !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
@@ -49,10 +48,52 @@ body {
     box-sizing: border-box !important;
 }
 
+.infobox-title {
+    background-color: var(--color-forest-dark) !important;
+    color: #ffffff !important;
+    font-size: 1.15rem !important;
+    padding: 8px !important;
+    border-radius: 6px !important;
+    font-weight: 700 !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Flexbox list for Desktop Infobox */
+.quick-facts-card {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+}
+
+.fact-row {
+    display: flex !important;
+    flex-direction: column !important; /* stack values below labels in compact sidebar */
+    gap: 4px !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    padding-bottom: 8px !important;
+    width: 100% !important;
+}
+
+.fact-label {
+    font-weight: 700 !important;
+    color: var(--color-forest-dark) !important;
+    font-size: 0.85rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.fact-value {
+    color: #333333 !important;
+    font-size: 0.95rem !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
 /* Main Wikipedia content visually swaps to Left Column (column 1) */
 #wiki-content {
     grid-column: 1 !important;
-    grid-row: 1 !important;
+    grid-row: 2 !important;
     width: 100% !important;
 }
 
@@ -61,25 +102,9 @@ body {
     margin-bottom: 2.5rem !important;
 }
 
-/* Centered bottom player with curved edges matching the desktop grid width */
-.podcast-player {
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    border-radius: 16px 16px 0 0 !important;
-    border: 1px solid var(--glass-border) !important;
-    border-bottom: none !important;
-    z-index: 999;
-}
-
 /* Large monitors typography boost */
 @media (min-width: 1440px) {
     .container {
-        max-width: 1300px !important;
-    }
-
-    .podcast-player {
         max-width: 1300px !important;
     }
 }

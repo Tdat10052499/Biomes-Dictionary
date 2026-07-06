@@ -8,7 +8,6 @@ body {
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
-    padding-bottom: 100px !important; /* space for bottom podcast player */
     overflow-x: hidden !important;
     background: #fafafa !important; /* soft off-white background for high text contrast */
 }

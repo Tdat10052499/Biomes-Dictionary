@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Learn about the Desert Biome - Mobile version.">
-    <title>Desert Biome - Biosphere Encyclopedia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about the Tundra Biome - Desktop version.">
+    <title>Tundra Biome - Biosphere Encyclopedia</title>
     <!-- Google Fonts for premium typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="desert-mobile.css">
+    <link rel="stylesheet" href="tundra-desktop.css">
     <script defer src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const wikiContent = document.getElementById('wiki-content');
             if (!wikiContent) return;
             
-            async function fetchWikipediaMobile(topic) {
+            async function fetchWikipediaDesktop(topic) {
                 try {
                     let shadow = wikiContent.shadowRoot;
                     if (!shadow) {
@@ -51,21 +51,30 @@
                                     max-width: 100% !important;
                                 }
                                 img, figure, .thumb, .thumbinner, .tright, .tleft {
-                                    width: 100% !important;
-                                    max-width: 100% !important;
+                                    max-width: 350px !important;
+                                    width: auto !important;
                                     height: auto !important;
-                                    float: none !important;
-                                    margin: 15px auto !important;
+                                    float: right !important;
+                                    margin: 10px 0 20px 25px !important;
+                                    clear: right !important;
                                     object-fit: contain;
                                     border-radius: 8px;
                                 }
-                                table, .infobox {
-                                    display: block !important;
+                                table.infobox, .infobox {
+                                    display: table !important;
+                                    max-width: 350px !important;
+                                    width: 350px !important;
+                                    float: right !important;
+                                    clear: right !important;
+                                    margin: 0 0 20px 20px !important;
+                                    border-collapse: collapse;
+                                    font-size: 0.85rem;
+                                }
+                                table:not(.infobox), table.wikitable {
                                     width: 100% !important;
-                                    float: none !important;
+                                    display: block !important;
                                     overflow-x: auto !important;
-                                    -webkit-overflow-scrolling: touch;
-                                    white-space: nowrap;
+                                    -webkit-overflow-scrolling: touch !important;
                                     margin-bottom: 20px !important;
                                 }
                                 .navbox, .ambox, .metadata, .editsection, .noprint, .magnify {
@@ -73,31 +82,28 @@
                                 }
                                 p, li {
                                     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-                                    font-size: 17px !important;
-                                    line-height: 1.7 !important;
-                                    color: #333333 !important;
-                                    margin-bottom: 20px !important;
+                                    line-height: 1.8;
+                                    font-size: 17.5px;
                                     white-space: normal;
+                                    color: #2b3a2e; /* matches --text-primary */
                                 }
                                 a {
-                                    color: #bf8f54; /* matches --color-earth-dark */
+                                    color: #5c768d; /* matches --color-tundra-dark */
                                     text-decoration: underline;
                                 }
                                 h2 {
                                     font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-                                    font-size: 24px !important;
-                                    margin-top: 35px !important;
-                                    margin-bottom: 15px !important;
-                                    color: #111 !important;
-                                    border-bottom: 2px solid #a8763e; /* matches --color-earth-dark */
-                                    padding-bottom: 5px;
+                                    font-size: 1.75rem;
+                                    color: #2c4230; /* matches --color-forest-dark */
+                                    margin: 2.25rem 0 1rem 0;
+                                    border-bottom: 2px solid #5c768d; /* matches --color-tundra-dark */
+                                    padding-bottom: 0.35rem;
                                 }
                                 h3 {
                                     font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-                                    font-size: 20px !important;
-                                    margin-top: 25px !important;
-                                    margin-bottom: 10px !important;
-                                    color: #222 !important;
+                                    font-size: 1.35rem;
+                                    color: #2c4230; /* matches --color-forest-dark */
+                                    margin: 1.75rem 0 0.75rem 0;
                                 }
                             </style>
                         `;
@@ -106,12 +112,12 @@
                         shadow.innerHTML = `<p>No information found for "${topic}".</p>`;
                     }
                 } catch (error) {
-                    console.error('Error fetching mobile Wiki data:', error);
+                    console.error('Error fetching desktop Wiki data:', error);
                     const shadow = wikiContent.shadowRoot || wikiContent.attachShadow({ mode: 'open' });
                     shadow.innerHTML = `<p style="color: #a28b75; font-weight: 500;">Failed to load biome details. Please check connection.</p>`;
                 }
             }
-            fetchWikipediaMobile('Desert');
+            fetchWikipediaDesktop('Tundra');
         });
     </script>
 </head>
@@ -148,33 +154,37 @@
         
         <div class="wiki-grid no-sidebar">
             <article class="wiki-main reveal-on-scroll delay-100">
-                <h1 class="wiki-title">Desert Biome</h1>
+                <h1 class="wiki-title">Tundra Biome</h1>
                 
                 <div class="desktop-wrapper">
                     <!-- Quick Facts / Recycled Materials Card -->
                     <aside class="wiki-infobox reveal-on-scroll delay-200">
                         <h2 class="infobox-title">Thông tin sa bàn</h2>
-                        <div class="infobox-image" style="background-image: url('https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=400&q=80');"></div>
+                        <div class="infobox-image" style="background-image: url('https://images.unsplash.com/photo-1528183429752-a97d0bf99b5a?auto=format&fit=crop&w=400&q=80');"></div>
                         <div class="quick-facts-card">
                             <div class="fact-row">
                                 <span class="fact-label">Area</span>
-                                <span class="fact-value">~20% of Earth's surface</span>
+                                <span class="fact-value">~10% of Earth's surface.</span>
                             </div>
                             <div class="fact-row">
-                                <span class="fact-label">Rainfall</span>
-                                <span class="fact-value">&lt; 250mm/year</span>
+                                <span class="fact-label">Climate</span>
+                                <span class="fact-value">Average winter temp around -34°C with low precipitation (150-250mm/year).</span>
+                            </div>
+                            <div class="fact-row">
+                                <span class="fact-label">Carbon Storage</span>
+                                <span class="fact-value">Permafrost stores an estimated 1,460–1,600 billion metric tons of organic carbon.</span>
                             </div>
                             <div class="fact-row">
                                 <span class="fact-label">Recycled Materials</span>
-                                <span class="fact-value">Crumpled yellow nylon bags for sand dunes, green plastic bottle caps for cacti.</span>
+                                <span class="fact-value">White styrofoam packaging and cut clear plastic cups/bottles representing snow, ice, and permafrost.</span>
                             </div>
                             <div class="fact-row">
                                 <span class="fact-label">Primary Flora</span>
-                                <span class="fact-value">Cactus, shrubs, succulents, palm trees</span>
+                                <span class="fact-value">Mosses, lichens, dwarf shrubs, grasses</span>
                             </div>
                             <div class="fact-row">
                                 <span class="fact-label">Primary Fauna</span>
-                                <span class="fact-value">Camels, lizards, snakes, scorpions, coyotes</span>
+                                <span class="fact-value">Polar bears, Arctic foxes, caribou, snowy owls</span>
                             </div>
                         </div>
                     </aside>
@@ -186,17 +196,17 @@
                                 <span class="play-icon">▶</span>
                             </button>
                             <div class="player-info">
-                                <span class="player-title">🎧 Listen to the Desert Podcast</span>
-                                <span class="player-track">Arid Landscape Adaptations</span>
+                                <span class="player-title">🎧 Listen to the Tundra Podcast</span>
+                                <span class="player-track">Frozen Tundra Adaptations</span>
                             </div>
                             <div class="player-controls">
                                 <select id="podcast-track-select" class="track-select">
-                                    <option value="desert" selected>3. Desert Guide</option>
+                                    <option value="tundra" selected>5. Tundra Guide</option>
                                     <option value="ocean">1. Aquatic / Ocean Guide</option>
                                     <option value="forest">2. Tropical Forest Guide</option>
-                                    <option value="tundra">5. Tundra Guide</option>
+                                    <option value="desert">3. Desert Guide</option>
                                 </select>
-                                <audio id="podcast-audio" src="assets/audio/desert.mp3"></audio>
+                                <audio id="podcast-audio" src="assets/audio/tundra.mp3"></audio>
                             </div>
                         </div>
                     </div>
